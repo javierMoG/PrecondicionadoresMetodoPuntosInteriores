@@ -43,7 +43,7 @@ tau = (0.5)*(mu'*z)/p;
 %-----------------------------------------------------------
 % Norma de las condiciones necesarias de KKT
 H =[Q*x+A'*lambda-F'*mu+d; A*x-b;-F*x+z+c;mu.*z];
-norma = norm(H);
+norma = norm(H, "inf");
 disp('Iter      CNPO           alfa    tau    rcond(K)')
 disp('-----------------------------------------')
 while(norma > tol && cinter < maxiter)
@@ -94,7 +94,7 @@ while(norma > tol && cinter < maxiter)
     % Condiciones necesarias de KKT
     H=[Q*x+A'*lambda-F'*mu+d;A*x-b; -F*x+z+c;mu.*z];
        
-    norma = norm(H);
+    norma = norm(H, "inf");
     fprintf('%3.0f  %2.8f  %2.8f %2.8f %2.16f\n',cinter,norma,alfa,2*tau,condK)
 end
 
